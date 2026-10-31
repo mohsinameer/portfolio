@@ -14,12 +14,6 @@ import Link from "next/link";
 
 import { FadeIn } from "@/components/ui/motion-primitives";
 
-/**
- * Project imagery below is mockup-only. All visuals are sourced from
- * Dribbble and credit belongs to the original creators on dribbble.com.
- * Replace these with your own work before shipping.
- */
-
 type Project = {
   id: string;
   icon: ComponentType<{ className?: string }>;
@@ -42,7 +36,7 @@ const PROJECTS: Project[] = [
     website: "https://thelivinginfluence.com/",
     imageRatio: 752 / 497,
     image:
-      "https://cdn.dribbble.com/userupload/46128964/file/b92b9d268dd928642ca94bd49e32923a.jpg?resize=752x497&vertical=center",
+      "https://res.cloudinary.com/do8ljuuo1/image/upload/v1793442706/Project1_c4bypx.webp",
   },
   {
     id: "handsy-market",
@@ -54,7 +48,7 @@ const PROJECTS: Project[] = [
     website: "https://www.handsymarket.com/",
     imageRatio: 1024 / 768,
     image:
-      "https://cdn.dribbble.com/userupload/24599416/file/original-1ae5075dcd129aebb16bdbca24b41ac7.png?resize=1024x768&vertical=center",
+      "https://res.cloudinary.com/do8ljuuo1/image/upload/v1793442707/Project2_xg58mt.webp",
   },
   {
     id: "audulate",
@@ -66,7 +60,7 @@ const PROJECTS: Project[] = [
     website: "https://audulate.com/",
     imageRatio: 1024 / 768,
     image:
-      "https://cdn.dribbble.com/userupload/47357856/file/75841fa59f32f05ca6c5ddf02d08dfe6.png?resize=1024x768&vertical=center",
+      "https://res.cloudinary.com/do8ljuuo1/image/upload/v1793442707/Project3_twr54t.webp",
   },
   {
     id: "mamark",
@@ -78,7 +72,7 @@ const PROJECTS: Project[] = [
     website: "https://www.mamark.in/",
     imageRatio: 1024 / 768,
     image:
-      "https://cdn.dribbble.com/userupload/43955214/file/original-d4cde1de803e84b97d8892e3444c04b0.png?resize=1024x768&vertical=center",
+      "https://res.cloudinary.com/do8ljuuo1/image/upload/v1793442707/Project4_rcdvw1.webp",
   },
   {
     id: "vedic-voyages",
@@ -90,7 +84,7 @@ const PROJECTS: Project[] = [
     website: "https://vedicvoyages.com/",
     imageRatio: 1024 / 768,
     image:
-      "https://cdn.dribbble.com/userupload/30310902/file/original-621e7fe47be9d11ee14544456c693bec.png?resize=1024x768&vertical=center",
+      "https://res.cloudinary.com/do8ljuuo1/image/upload/v1793442707/Project5_rmnwpf.webp",
   },
   {
     id: "quebooking",
@@ -102,7 +96,7 @@ const PROJECTS: Project[] = [
     website: "https://quebooking.com/",
     imageRatio: 1024 / 768,
     image:
-      "https://cdn.dribbble.com/userupload/16560717/file/original-c6f745d50302d66609bfe080f99f5396.png?resize=1024x768&vertical=center",
+      "https://res.cloudinary.com/do8ljuuo1/image/upload/v1793442708/Project6_z8iate.webp",
   },
   {
     id: "convobot360",
@@ -114,7 +108,7 @@ const PROJECTS: Project[] = [
     website: "https://www.convobot360.com/",
     imageRatio: 1024 / 768,
     image:
-      "https://cdn.dribbble.com/userupload/46128964/file/b92b9d268dd928642ca94bd49e32923a.jpg?resize=752x497&vertical=center",
+      "https://res.cloudinary.com/do8ljuuo1/image/upload/v1793442708/Project7_xucmga.webp",
   },
 ];
 
