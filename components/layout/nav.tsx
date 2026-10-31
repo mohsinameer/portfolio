@@ -89,18 +89,18 @@ function NavThemeToggle(): ReactNode {
           : "Toggle theme"
       }
       aria-pressed={mounted ? isDark : undefined}
-      className="focus-ring relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-background ring-1 ring-foreground/8 transition-colors"
+      className="focus-ring relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-foreground/5 ring-1 ring-foreground/10 transition-all duration-300 hover:bg-foreground/10 hover:scale-105 active:scale-95"
     >
       <span aria-hidden="true" className="relative h-4 w-4">
         <Sun
-          className={`absolute inset-0 h-4 w-4 text-foreground transition-all duration-300 ${
+          className={`absolute inset-0 h-4 w-4 text-amber-500 transition-all duration-300 ${
             mounted && isDark
               ? "rotate-0 scale-100 opacity-100"
               : "-rotate-90 scale-0 opacity-0"
           }`}
         />
         <Moon
-          className={`absolute inset-0 h-4 w-4 text-foreground transition-all duration-300 ${
+          className={`absolute inset-0 h-4 w-4 text-indigo-400 transition-all duration-300 ${
             mounted && !isDark
               ? "rotate-0 scale-100 opacity-100"
               : "rotate-90 scale-0 opacity-0"
@@ -132,7 +132,6 @@ export function Nav(): ReactNode {
     const activeEl =
       activeIndex >= 0 ? itemRefs.current[activeIndex] : null;
     if (!list || !activeEl) {
-      setPillRect(null);
       return;
     }
     const listRect = list.getBoundingClientRect();
@@ -154,7 +153,7 @@ export function Nav(): ReactNode {
       aria-label="Primary"
       className="fixed left-1/2 top-6 z-50 -translate-x-1/2"
     >
-      <div className="flex items-center gap-1 rounded-full bg-background p-1.5 shadow-sm border border-foreground/8">
+      <div className="glass-panel flex items-center gap-1.5 rounded-full p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-foreground/10 dark:border-white/12">
         <ul ref={listRef} className="relative flex items-center gap-1">
           {pillRect && (
             <motion.span
@@ -167,7 +166,7 @@ export function Nav(): ReactNode {
                   : { duration: 0 }
               }
               style={{ left: 0, top: 0, bottom: 0 }}
-              className="absolute rounded-full bg-foreground/5 ring-1 ring-foreground/8"
+              className="absolute rounded-full bg-gradient-to-r from-indigo-500/15 via-indigo-500/10 to-cyan-500/15 dark:from-indigo-400/20 dark:via-indigo-400/10 dark:to-cyan-400/20 ring-1 ring-indigo-500/30 dark:ring-indigo-400/40 shadow-[0_0_15px_-3px_rgba(99,102,241,0.25)]"
             />
           )}
           {NAV_ITEMS.map((item, index) => {
@@ -188,8 +187,8 @@ export function Nav(): ReactNode {
                   <span
                     className={
                       isActive
-                        ? "relative z-10 text-foreground"
-                        : "relative z-10 text-foreground/60 hover:text-foreground"
+                        ? "relative z-10 text-foreground font-semibold"
+                        : "relative z-10 text-foreground/65 hover:text-foreground"
                     }
                   >
                     {item.label}

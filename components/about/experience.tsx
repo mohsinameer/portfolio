@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
 
@@ -20,12 +21,14 @@ const ENTRIES: Entry[] = [
     location: "Noida",
     period: "September 2024 – October 2026",
     responsibilities: [
-      "Managed website content and supported Shopify store maintenance, including product listings, catalogue updates, collections, pages, navigation, and content accuracy.",
-      "Developed responsive web pages using HTML5, CSS3, JavaScript, Tailwind CSS, and Bootstrap, contributing to a reported 25% improvement in user engagement.",
-      "Built landing pages and reusable UI components for React.js and Next.js projects using AI-assisted development, refining generated code for readability and maintainability.",
-      "Supported SEO and website performance improvements through metadata optimization, content updates, frontend enhancements, and technical troubleshooting.",
-      "Worked with designers, developers, and marketing stakeholders to maintain mobile-friendly UX/UI, consistent branding, and timely website updates.",
-      "Used AI tools to debug issues, improve code quality, automate repetitive tasks, and streamline workflows; project work contributed to reported improvements in page load time and SEO performance.",
+      "Developed and maintained responsive websites, landing pages, and e-commerce stores using WordPress, PHP, HTML5, CSS3, JavaScript, Tailwind CSS, and Bootstrap.",
+      "Customized WordPress themes and PHP templates, implementing custom layouts, styling, navigation, and feature updates aligned with brand standards.",
+      "Applied backend fundamentals including PHP server-side scripting, form handling, input validation, and REST API integration to connect frontend interfaces with web services.",
+      "Managed website content and maintained CMS platforms (WordPress and Shopify), overseeing product listings, catalogue updates, and digital asset accuracy.",
+      "Diagnosed and resolved technical issues through systematic troubleshooting, addressing plugin conflicts, broken scripts, and responsive layout bugs using browser developer tools.",
+      "Implemented website security best practices, including regular WordPress/CMS updates, plugin management, input sanitization, and secure form processing.",
+      "Optimized website performance and Core Web Vitals through asset minification, image compression, and caching strategies to enhance page load speeds.",
+      "Built reusable UI components for React.js and Next.js projects with AI-assisted workflows, collaborating with cross-functional teams to streamline delivery.",
     ],
   },
   {
@@ -34,60 +37,77 @@ const ENTRIES: Entry[] = [
     location: "Gurugram",
     period: "October 2021 – March 2024",
     responsibilities: [
-      "Maintained responsive website interfaces, campaign pages, and landing pages using HTML5, CSS3, and JavaScript.",
-      "Authored, edited, published, and maintained digital content using Adobe Experience Manager (AEM) and Contentful.",
-      "Managed digital assets, metadata, content updates, and publishing workflows to maintain accuracy and brand consistency.",
-      "Supported SEO improvements, responsive UX/UI, cross-browser compatibility, website maintenance, and frontend performance optimization.",
-      "Collaborated with content, design, development, and marketing teams to deliver digital campaigns and website updates aligned with business requirements.",
-      "Applied AI-assisted research and debugging to troubleshoot issues, refine code, automate repetitive work, and improve productivity.",
+      "Built and maintained responsive website interfaces, campaign landing pages, and web components using HTML5, CSS3, and JavaScript across global brand sites.",
+      "Authored, edited, and published digital content and structured assets using Adobe Experience Manager (AEM) and Contentful.",
+      "Assisted with technical troubleshooting and debugging to resolve UI bugs, broken links, and cross-browser rendering discrepancies across desktop and mobile devices.",
+      "Adhered to enterprise website security standards, access control protocols, and data protection practices across digital publishing workflows.",
+      "Supported frontend performance optimization, asset compression, and on-page SEO improvements to enhance user experience and page speed.",
+      "Collaborated with design, content, and engineering teams while utilizing debugging tools to streamline workflows and maintain site reliability.",
     ],
   },
 ];
 
-const ROW_HEIGHT = 64;
-
 export function Experience(): ReactNode {
   return (
-    <div className="flex flex-col gap-3">
-      <h3 className="text-foreground text-[15px] font-semibold tracking-tight">
-        Experience
-      </h3>
-      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative rounded-4xl border p-2 sm:p-4">
-        <motion.div
-          className="relative"
-          initial={false}
-          animate={{ height: "auto" }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <ul className="flex flex-col gap-2">
-            {ENTRIES.map((entry) => (
-              <li
-                key={`${entry.company}-${entry.period}`}
-                className="bg-background border-foreground/5 flex items-center gap-4 rounded-3xl border p-2"
-                style={{ minHeight: ROW_HEIGHT }}
-              >
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
+        <span className="cyber-pill text-[11px] font-semibold tracking-wider uppercase text-indigo-600 dark:text-cyan-400 self-start">
+          Career Timeline
+        </span>
+        <h3 className="text-foreground text-[20px] font-semibold tracking-tight sm:text-[22px]">
+          Work Experience
+        </h3>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        {ENTRIES.map((entry) => (
+          <motion.div
+            key={`${entry.company}-${entry.period}`}
+            initial={false}
+            className="group relative flex flex-col gap-4 rounded-3xl border border-foreground/10 bg-background/80 p-5 sm:p-6 backdrop-blur-xl transition-all duration-300 hover:border-indigo-500/35 hover:bg-background hover:shadow-[0_12px_30px_-5px_rgba(99,102,241,0.15)] dark:border-white/10 dark:bg-[#0c101a]/80"
+          >
+            {/* Header info */}
+            <div className="flex flex-wrap items-start justify-between gap-3 border-b border-foreground/8 pb-4 dark:border-white/8">
+              <div className="flex items-center gap-3.5">
                 <CompanyLogo entry={entry} />
-                <div className="flex min-w-0 flex-1 flex-col">
-                  <span className="text-foreground text-[17px] font-semibold tracking-tight sm:text-[18px]">
+                <div>
+                  <h4 className="text-foreground text-[18px] font-semibold tracking-tight sm:text-[19px]">
                     {entry.company}
-                  </span>
-                  <span className="text-foreground/65 mt-0.5 text-[14px] tracking-tight sm:text-[15px]">
-                    {entry.role}
-                    <span className="text-foreground/30 mx-2">•</span>
-                    <span className="text-foreground/55">{entry.location}</span>
-                    <span className="text-foreground/30 mx-2">•</span>
-                    <span className="text-foreground/55">{entry.period}</span>
-                  </span>
-                  <ul className="text-foreground/65 mt-2 list-disc space-y-1 pl-5 text-[14px] leading-relaxed tracking-tight sm:text-[15px]">
-                    {entry.responsibilities.map((responsibility) => (
-                      <li key={responsibility}>{responsibility}</li>
-                    ))}
-                  </ul>
+                  </h4>
+                  <div className="mt-1 flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center rounded-lg bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold text-indigo-600 dark:text-cyan-300">
+                      {entry.role}
+                    </span>
+                    <span className="text-foreground/35 text-xs">•</span>
+                    <span className="text-foreground/60 text-xs font-medium">
+                      {entry.location}
+                    </span>
+                  </div>
                 </div>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+              </div>
+
+              <span className="font-mono text-xs font-medium text-foreground/55 rounded-full border border-foreground/8 bg-foreground/2 px-3 py-1 dark:border-white/8 dark:bg-white/[0.03]">
+                {entry.period}
+              </span>
+            </div>
+
+            {/* Responsibilities list with custom indicators */}
+            <ul className="flex flex-col gap-2.5 pt-1">
+              {entry.responsibilities.map((responsibility) => (
+                <li
+                  key={responsibility}
+                  className="flex items-start gap-2.5 text-[14px] leading-relaxed tracking-tight text-foreground/75 sm:text-[15px]"
+                >
+                  <ChevronRight
+                    className="mt-1 h-3.5 w-3.5 shrink-0 text-indigo-500 dark:text-cyan-400"
+                    aria-hidden="true"
+                  />
+                  <span>{responsibility}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
@@ -101,12 +121,8 @@ function CompanyLogo({
   const initials = entry.company.charAt(0);
   return (
     <span
-      className="ring-foreground/8 inline-flex h-12 w-12 shrink-0 items-center justify-center bg-white ring-1 dark:ring-white/10"
+      className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-foreground/10 bg-background shadow-xs ring-1 ring-foreground/5 dark:border-white/10 dark:bg-white/[0.04]"
       aria-hidden="true"
-      style={{
-        borderRadius: 14,
-        ...(entry.slug ? {} : entry.brand ? { backgroundColor: entry.brand } : {}),
-      }}
     >
       {entry.slug ? (
         <img
@@ -118,11 +134,7 @@ function CompanyLogo({
           draggable={false}
         />
       ) : (
-        <span
-          className={`text-[18px] font-semibold tracking-tight ${
-            entry.brand ? "text-white" : "text-foreground/60"
-          }`}
-        >
+        <span className="text-[18px] font-bold tracking-tight text-indigo-600 dark:text-cyan-400">
           {initials}
         </span>
       )}

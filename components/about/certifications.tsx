@@ -1,3 +1,4 @@
+import { Award, CheckCircle2 } from "lucide-react";
 import type { ReactNode } from "react";
 
 type Certification = {
@@ -34,38 +35,41 @@ const CERTIFICATIONS: Certification[] = [
 
 export function Certifications(): ReactNode {
   return (
-    <div className="flex flex-col gap-3">
-      <h3 className="text-foreground text-[15px] font-semibold tracking-tight">
-        Certifications
-      </h3>
-      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative rounded-4xl border p-2 sm:p-4">
-        <ul className="flex flex-col gap-2">
-          {CERTIFICATIONS.map((certification) => (
-            <li
-              key={`${certification.name}-${certification.provider}`}
-              className="bg-background border-foreground/5 flex items-center gap-4 rounded-3xl border p-2"
-              style={{ minHeight: 64 }}
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
+        <span className="cyber-pill text-[11px] font-semibold tracking-wider uppercase text-indigo-600 dark:text-cyan-400 self-start">
+          Verified Credentials
+        </span>
+        <h3 className="text-foreground text-[20px] font-semibold tracking-tight sm:text-[22px]">
+          Certifications
+        </h3>
+      </div>
+
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {CERTIFICATIONS.map((certification) => (
+          <div
+            key={`${certification.name}-${certification.provider}`}
+            className="group relative flex items-center gap-3.5 rounded-2xl border border-foreground/10 bg-background/80 p-3.5 backdrop-blur-xl transition-all duration-300 hover:border-indigo-500/35 hover:bg-background hover:shadow-[0_6px_20px_-4px_rgba(99,102,241,0.12)] dark:border-white/10 dark:bg-[#0c101a]/80"
+          >
+            <span
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-foreground/10 bg-foreground/4 text-indigo-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-cyan-400"
+              aria-hidden="true"
             >
-              <span
-                className="border-foreground/15 inline-flex h-12 w-12 shrink-0 items-center justify-center border"
-                aria-hidden="true"
-                style={{ borderRadius: 14 }}
-              >
-                <span className="text-foreground/60 text-[18px] font-semibold tracking-tight">
-                  {certification.provider.charAt(0)}
-                </span>
+              <Award className="h-5 w-5" />
+            </span>
+            <div className="flex min-w-0 flex-1 flex-col">
+              <span className="text-foreground text-[15px] font-semibold tracking-tight truncate sm:text-[15.5px]">
+                {certification.name}
               </span>
-              <div className="flex min-w-0 flex-col">
-                <span className="text-foreground text-[17px] font-semibold tracking-tight sm:text-[18px]">
-                  {certification.name}
-                </span>
-                <span className="text-foreground/65 mt-0.5 text-[14px] tracking-tight sm:text-[15px]">
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 dark:text-emerald-400 shrink-0" />
+                <span className="text-foreground/60 text-[12.5px] tracking-tight truncate">
                   {certification.provider}
                 </span>
               </div>
-            </li>
-          ))}
-        </ul>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

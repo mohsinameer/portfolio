@@ -219,19 +219,27 @@ export function Stack(): ReactNode {
   }, [resetKey]);
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex items-center gap-3">
-        <h3 className="text-foreground text-[15px] font-semibold tracking-tight">
-          Stack
-        </h3>
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
+        <span className="cyber-pill text-[11px] font-semibold tracking-wider uppercase text-indigo-600 dark:text-cyan-400 self-start">
+          Interactive Physics
+        </span>
+        <div className="flex items-center justify-between">
+          <h3 className="text-foreground text-[20px] font-semibold tracking-tight sm:text-[22px]">
+            Interactive Tech Stack
+          </h3>
+          <span className="font-mono text-xs text-foreground/50 hidden sm:inline">
+            Drag &amp; toss chips
+          </span>
+        </div>
       </div>
 
-      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative h-40 overflow-hidden rounded-4xl border sm:h-64">
+      <div className="relative h-44 overflow-hidden rounded-3xl border border-foreground/10 bg-background/80 backdrop-blur-xl sm:h-72 dark:border-white/10 dark:bg-[#0c101a]/80 shadow-inner">
         <button
           type="button"
           onClick={() => setResetKey((k) => k + 1)}
           aria-label="Reset stack"
-          className="focus-ring border-foreground/8 bg-background text-foreground/70 hover:text-foreground absolute top-3 right-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-xl border transition-colors"
+          className="focus-ring border border-foreground/10 bg-background/90 text-foreground/70 hover:text-foreground hover:border-indigo-500/40 hover:shadow-[0_0_15px_-3px_rgba(99,102,241,0.3)] absolute top-3 right-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-xl backdrop-blur-md transition-all duration-300"
         >
           <RotateCcw
             className="h-4 w-4"
@@ -277,7 +285,7 @@ export function Stack(): ReactNode {
 function ChipPill({ chip }: { chip: Chip }): ReactNode {
   return (
     <div
-      className="dark:ring-1 dark:ring-white/15 inline-flex items-center gap-2 p-1 pr-2 text-[15px] font-medium tracking-tight sm:text-[16px]"
+      className="dark:ring-1 dark:ring-white/15 inline-flex items-center gap-2 p-1 pr-2.5 text-[14px] font-medium tracking-tight sm:text-[15px] shadow-sm transition-transform"
       style={{
         backgroundColor: chip.bg,
         color: chip.fg,
@@ -285,7 +293,7 @@ function ChipPill({ chip }: { chip: Chip }): ReactNode {
       }}
     >
       <span
-        className="inline-flex h-8 w-8 items-center justify-center bg-white/95"
+        className="inline-flex h-7 w-7 items-center justify-center bg-white/95 rounded-lg shadow-xs"
         style={{ borderRadius: `${ICON_RADIUS}px` }}
         aria-hidden="true"
       >
@@ -294,7 +302,7 @@ function ChipPill({ chip }: { chip: Chip }): ReactNode {
           alt=""
           width={18}
           height={18}
-          className="h-5 w-5"
+          className="h-4.5 w-4.5"
           draggable={false}
         />
       </span>

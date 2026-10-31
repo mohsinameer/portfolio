@@ -1,3 +1,4 @@
+import { GraduationCap } from "lucide-react";
 import type { ReactNode } from "react";
 
 type Entry = {
@@ -21,63 +22,44 @@ const ENTRIES: Entry[] = [
   },
 ];
 
-const ROW_HEIGHT = 64;
-
 export function Education(): ReactNode {
   return (
-    <div className="flex flex-col gap-3">
-      <h3 className="text-foreground text-[15px] font-semibold tracking-tight">
-        Education
-      </h3>
-      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative rounded-4xl border p-2 sm:p-4">
-        <ul className="flex flex-col gap-2">
-          {ENTRIES.map((entry) => (
-            <li
-              key={`${entry.school}-${entry.period}`}
-              className="bg-background border-foreground/5 flex items-center gap-4 rounded-3xl border p-2"
-              style={{ minHeight: ROW_HEIGHT }}
-            >
-              <SchoolLogo entry={entry} />
-              <div className="flex min-w-0 flex-col">
-                <span className="text-foreground text-[17px] font-semibold tracking-tight sm:text-[18px]">
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
+        <span className="cyber-pill text-[11px] font-semibold tracking-wider uppercase text-indigo-600 dark:text-cyan-400 self-start">
+          Academic Foundations
+        </span>
+        <h3 className="text-foreground text-[20px] font-semibold tracking-tight sm:text-[22px]">
+          Education
+        </h3>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        {ENTRIES.map((entry) => (
+          <div
+            key={`${entry.school}-${entry.period}`}
+            className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-foreground/10 bg-background/80 p-4 sm:p-5 backdrop-blur-xl transition-all duration-300 hover:border-indigo-500/35 hover:bg-background hover:shadow-[0_8px_20px_-5px_rgba(99,102,241,0.12)] dark:border-white/10 dark:bg-[#0c101a]/80"
+          >
+            <div className="flex items-center gap-3.5">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-foreground/10 bg-foreground/4 text-indigo-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-cyan-400">
+                <GraduationCap className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <div className="flex flex-col">
+                <span className="text-foreground text-[16px] font-semibold tracking-tight sm:text-[17px]">
                   {entry.school}
                 </span>
-                <span className="text-foreground/65 mt-0.5 text-[14px] tracking-tight sm:text-[15px]">
+                <span className="text-foreground/70 text-[13px] tracking-tight sm:text-[14px]">
                   {entry.degree}
-                  <span className="text-foreground/30 mx-2">•</span>
-                  <span className="text-foreground/55">{entry.period}</span>
                 </span>
               </div>
-            </li>
-          ))}
-        </ul>
+            </div>
+
+            <span className="font-mono text-xs font-medium text-foreground/55 self-start sm:self-center rounded-full border border-foreground/8 bg-foreground/2 px-3 py-1 dark:border-white/8 dark:bg-white/[0.03]">
+              {entry.period}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
-  );
-}
-
-function SchoolLogo({ entry }: { entry: Entry }): ReactNode {
-  const initials = entry.school.charAt(0);
-  return (
-    <span
-      className="border-foreground/15 inline-flex h-12 w-12 shrink-0 items-center justify-center border"
-      aria-hidden="true"
-      style={{ borderRadius: 14 }}
-    >
-      {entry.slug ? (
-        <img
-          src={`https://cdn.simpleicons.org/${entry.slug}`}
-          alt=""
-          width={24}
-          height={24}
-          className="h-6 w-6"
-          draggable={false}
-        />
-      ) : (
-        <span className="text-foreground/60 text-[18px] font-semibold tracking-tight">
-          {initials}
-        </span>
-      )}
-    </span>
   );
 }
